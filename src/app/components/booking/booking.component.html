@@ -1,0 +1,175 @@
+<div *ngIf="currentStepIndex === 0">
+  <h1>Search trips</h1>
+  <form #searchTripsForm="ngForm" (ngSubmit)="searchTrips(searchTripsForm)">
+    <p>
+      <small style="font-weight: bold;">Trip type</small><br>
+      <input type="radio" name="tripType" value="one-way" [(ngModel)]="tripType">
+      <small>One-way</small>
+      <input type="radio" name="tripType" value="return" [(ngModel)]="tripType">
+      <small>Return</small>
+    </p>
+    <p>
+      <small style="font-weight: bold;">From</small><br>
+      <select name="origin" ngModel>
+        <option value="" selected disabled hidden>Select an origin</option>
+        <option *ngFor="let origin of origins" [value]="origin">{{ origin }}</option>
+      </select><br>
+      <small style="color: red;">{{ originErrorMessage }}</small>
+    </p>
+    <p>
+      <small style="font-weight: bold;">To</small><br>
+      <select name="destination" ngModel>
+        <option value="" selected disabled hidden>Select a destination</option>
+        <option *ngFor="let destination of destinations" [value]="destination">{{ destination }}</option>
+      </select><br>
+      <small style="color: red;">{{ destinationErrorMessage }}</small>
+    </p>
+    <p>
+      <small style="font-weight: bold;">Outbound date</small><br>
+      <input type="date" name="outboundDate" [min]="now" ngModel><br>
+      <small style="color: red;">{{ outboundDateErrorMessage }}</small>
+    </p>
+    <p *ngIf="tripType === 'return'">
+      <small style="font-weight: bold;">Inbound date</small><br>
+      <input type="date" name="inboundDate" [min]="now" ngModel><br>
+      <small style="color: red;">{{ inboundDateErrorMessage }}</small>
+    </p>
+    <p>
+      <small style="font-weight: bold;">Ticket quantity</small><br>
+      <input type="text" name="ticketQuantity" placeholder="Enter a number" [(ngModel)]="ticketQuantity"><br>
+      <small style="color: red;">{{ ticketQuantityErrorMessage }}</small>
+    </p>
+    <p>
+      <small style="font-weight: bold;">Fare</small><br>
+      <select name="fareType" [(ngModel)]="fareType">
+        <option value="" selected disabled hidden>Select a fare</option>
+        <option value="E">Economy</option>
+        <option value="B">Business</option>
+        <option value="F">First Class</option>
+      </select><br>
+      <small style="color: red;">{{ fareTypeErrorMessage }}</small>
+    </p>
+    <p><input type="submit" value="Search trips"></p>
+  </form>
+</div>
+<div *ngIf="currentStepIndex === 1">
+  <h1>No results found :(</h1>
+  <p>
+    We couldn't find any bookings matching your search.<br>
+    Please try adjusting your dates or filters.
+  </p>
+  <a routerLink="/booking">Start a new search</a>
+</div>
+<div *ngIf="currentStepIndex === 2">
+  <a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;Outbound trips
+  <h1>Outbound trips</h1>
+  <table style="width: 50%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 2px solid black; text-align: left;">Departure date</th>
+        <th style="border: 2px solid black; text-align: left;">Arrival date</th>
+        <th style="border: 2px solid black; text-align: left;">Stops</th>
+        <th style="border: 2px solid black; text-align: left;">Starting from</th>
+        <th style="border: 2px solid black; text-align: left;">Select trip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trip of outboundTrips; let i = index">
+        <td style="border: 1px outset black;">{{ trip[0].departure?.replace('T', ' ') }}</td>
+        <td style="border: 1px outset black;">{{ trip[trip.length - 1].arrival?.replace('T', ' ') }}</td>
+        <td style="border: 1px outset black;">{{ trip.length - 1 }}</td>
+        <td style="border: 1px outset black;">{{ getOutboundTripPrice(i).toFixed(2) }}</td>
+        <td style="border: 1px outset black;"><input type="button" value="Select" (click)="selectOutboundTrip(i)"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="currentStepIndex === 3">
+  <a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;Inbound trips
+  <h1>Inbound trips</h1>
+  <table style="width: 50%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 2px solid black; text-align: left;">Departure date</th>
+        <th style="border: 2px solid black; text-align: left;">Arrival date</th>
+        <th style="border: 2px solid black; text-align: left;">Stops</th>
+        <th style="border: 2px solid black; text-align: left;">Starting from</th>
+        <th style="border: 2px solid black; text-align: left;">Select trip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trip of inboundTrips; let i = index">
+        <td style="border: 1px outset black;">{{ trip[0].departure?.replace('T', ' ') }}</td>
+        <td style="border: 1px outset black;">{{ trip[trip.length - 1].arrival?.replace('T', ' ') }}</td>
+        <td style="border: 1px outset black;">{{ trip.length - 1 }}</td>
+        <td style="border: 1px outset black;">{{ getInboundTripPrice(i).toFixed(2) }}</td>
+        <td style="border: 1px outset black;"><input type="button" value="Select" (click)="selectInboundTrip(i)"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="currentStepIndex === 4">
+  <div *ngIf="tripType === 'one-way'"><a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;Extras</div>
+  <div *ngIf="tripType === 'return'"><a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToInboundTripSelection($event)">Inbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;Extras</div>
+  <h1>Extras</h1>
+  <form #extraSelectionForm="ngForm" (ngSubmit)="goToCheckout()">
+    <p><input type="checkbox" name="extraBaggage" [(ngModel)]="extraBaggage"><small>Extra baggage for {{ getExtraBaggageTotalPrice().toFixed(2) }}</small></p>
+    <p><input type="checkbox" name="extraLegroom" [(ngModel)]="extraLegroom"><small>Extra legroom for {{ getExtraLegroomTotalPrice().toFixed(2) }}</small></p>
+    <p><input type="checkbox" name="priorityBoarding" [(ngModel)]="priorityBoarding"><small>Priority boarding for {{ getPriorityBoardingTotalPrice().toFixed(2) }}</small></p>
+    <p><input type="submit" value="Go to Checkout"></p>
+  </form>
+</div>
+<div *ngIf="currentStepIndex === 5">
+  <h1>Login</h1>
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <p>
+      <small style="font-weight: bold;">Email</small><br>
+      <input type="text" name="email" placeholder="Enter your email" ngModel><br>
+      <small style="color: red;">{{ emailErrorMessage }}</small>
+    </p>
+    <p>
+      <small style="font-weight: bold;">Password</small><br>
+      <input type="password" name="password" placeholder="Enter your password" ngModel><br>
+      <small style="color: red;">{{ passwordErrorMessage }}</small>
+    </p>
+    <p><input type="checkbox" name="rememberMe" ngModel><small>Remember me</small></p>
+    <p><input type="submit" value="Login"></p>
+  </form>
+</div>
+<div *ngIf="currentStepIndex === 6">
+  <div *ngIf="tripType === 'one-way'"><a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToExtraSelection($event)">Extras</a>&nbsp;&nbsp;>&nbsp;&nbsp;Checkout</div>
+  <div *ngIf="tripType === 'return'"><a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToInboundTripSelection($event)">Inbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToExtraSelection($event)">Extras</a>&nbsp;&nbsp;>&nbsp;&nbsp;Checkout</div>
+  <h1>Checkout</h1>
+  <form #checkoutForm="ngForm" (ngSubmit)="buyTickets()">
+    <p>
+      <small style="font-weight: bold;">Card number</small><br>
+      <input type="text" name="number" placeholder="Ex: 1234123412341234" [(ngModel)]="number"><br>
+      <small style="color: red;">{{ numberErrorMessage }}</small>
+    </p>
+    <p>
+      <small style="font-weight: bold;">Cardholder name</small><br>
+      <input type="text" name="name" placeholder="Ex: JOHN DOE" [(ngModel)]="name"><br>
+      <small style="color: red;">{{ nameErrorMessage }}</small>
+    </p>
+    <p>
+      <small style="font-weight: bold;">Expiration date</small><br>
+      <input type="text" name="expiration" placeholder="Ex: 01/27" [(ngModel)]="expiration"><br>
+      <small style="color: red;">{{ expirationErrorMessage }}</small>
+    </p>
+    <p>
+      <small style="font-weight: bold;">Secret code</small><br>
+      <input type="text" name="cvv" placeholder="Ex: 123" [(ngModel)]="cvv"><br>
+      <small style="color: red;">{{ cvvErrorMessage }}</small>
+    </p>
+    <p><small style="font-weight: bold;">Your booking total:</small> {{ getBookingTotalPrice().toFixed(2) }}</p>
+    <p><input type="submit" value="Buy tickets"></p>
+  </form>
+</div>
+<div *ngIf="currentStepIndex === 7">
+  <h1>Unavailable trip :(</h1>
+  <p>
+    One or more flights in your trip can't be booked anymore.<br>
+    Maybe they already departed or were cancelled.
+  </p>
+  <a routerLink="/booking">Start a new search</a>
+</div>

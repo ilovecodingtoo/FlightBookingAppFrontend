@@ -1,0 +1,106 @@
+<div *ngIf="flightNotfound">
+  <h1>404 Not Found :(</h1>
+  <p>
+    We couldn't find the flight you're looking for.<br>
+    It may have been deleted or never existed.
+  </p>
+  <a routerLink="/flights">Browse other flights</a>
+</div>
+<div *ngIf="viewDataInitialized && !flightNotfound">
+  <h1>Flight {{ flight?.code }}</h1>
+  <div *ngIf="getUserType() === 'admin'">
+    <p>
+      <small style="font-weight: bold;">Code:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.code }}<br>
+      <small style="font-weight: bold;">Origin:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.routeOrigin }}<br>
+      <small style="font-weight: bold;">Destination:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.routeDestination }}<br>
+      <small style="font-weight: bold;">Departure date:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.departure?.replace('T', ' ') }}<br>
+      <small style="font-weight: bold;">Arrival date:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.arrival?.replace('T', ' ') }}<br>
+      <small style="font-weight: bold;">Economy price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.economyPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Business price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.businessPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">First class price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.firstClassPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Extra baggage price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.extraBaggagePrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Extra legroom price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.extraLegroomPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Priority boarding price:</small>
+      &nbsp;
+      {{ flight?.priorityBoardingPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Total bookings:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.totalBookings }}<br>
+      <small style="font-weight: bold;">Total revenue:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.totalRevenue?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Aircraft:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a [routerLink]="['/aircrafts', flight?.aircraftId]">{{ flight?.aircraftTailNumber }}</a><br>
+    </p>
+  </div>
+  <div *ngIf="getUserType() === 'airline'">
+    <h3>Flight details</h3>
+    <p>
+      <small style="font-weight: bold;">Code:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.code }}<br>
+      <small style="font-weight: bold;">Origin:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.routeOrigin }}<br>
+      <small style="font-weight: bold;">Destination:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.routeDestination }}<br>
+      <small style="font-weight: bold;">Departure date:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.departure?.replace('T', ' ') }}<br>
+      <small style="font-weight: bold;">Arrival date:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.arrival?.replace('T', ' ') }}<br>
+      <small style="font-weight: bold;">Economy price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.economyPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Business price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.businessPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">First class price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.firstClassPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Extra baggage price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.extraBaggagePrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Extra legroom price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.extraLegroomPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Priority boarding price:</small>
+      &nbsp;
+      {{ flight?.priorityBoardingPrice?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Total bookings:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.totalBookings }}<br>
+      <small style="font-weight: bold;">Total revenue:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ flight?.totalRevenue?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Aircraft:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a [routerLink]="['/aircrafts', flight?.aircraftId]">{{ flight?.aircraftTailNumber }}</a><br>
+    </p>
+    <h3><br>Delete flight</h3>
+    <p><input type="button" value="Delete flight" (click)="deleteFlight()"></p>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<div *ngIf="viewDataInitialized">
+  <h1>My account</h1>
+  <div *ngIf="getUserType() !== 'admin'">
+    <h3>Account details</h3>
+  </div>
+  <form #emailForm="ngForm" (ngSubmit)="updateEmail(emailForm)">
+    <p>
+      <small style="font-weight: bold;">Email:</small><br>
+      <input type="text" name="email" [(ngModel)]="email" [disabled]="emailDisabled" placeholder="Enter a new email">
+      &nbsp;&nbsp;&nbsp;
+      <input type="button" value="Edit" (click)="enableEmail()" [style.display]="emailDisabled? 'inline-block' : 'none'">
+      <input type="submit" value="Update" [style.display]="emailDisabled? 'none' : 'inline-block'"><br>
+      <small style="color: red;">{{ emailErrorMessage }}</small>
+    </p>
+  </form>
+  <form *ngIf="getUserType() === 'airline'" #nameForm="ngForm" (ngSubmit)="updateName(nameForm)">
+    <p>
+      <small style="font-weight: bold;">Company name:</small><br>
+      <input type="text" name="name" [(ngModel)]="name" [disabled]="nameDisabled" placeholder="Enter a new company name">
+      &nbsp;&nbsp;&nbsp;
+      <input type="button" value="Edit" (click)="enableName()" [style.display]="nameDisabled? 'inline-block' : 'none'">
+      <input type="submit" value="Update" [style.display]="nameDisabled? 'none' : 'inline-block'"><br>
+      <small style="color: red;">{{ nameErrorMessage }}</small>
+    </p>
+  </form>
+  <form *ngIf="getUserType() === 'airline'" #iataCodeForm="ngForm" (ngSubmit)="updateIataCode(iataCodeForm)">
+    <p>
+      <small style="font-weight: bold;">IATA code:</small><br>
+      <input type="text" name="iataCode" [(ngModel)]="iataCode" [disabled]="iataCodeDisabled" placeholder="Enter a new IATA code">
+      &nbsp;&nbsp;&nbsp;
+      <input type="button" value="Edit" (click)="enableIataCode()" [style.display]="iataCodeDisabled? 'inline-block' : 'none'">
+      <input type="submit" value="Update" [style.display]="iataCodeDisabled? 'none' : 'inline-block'"><br>
+      <small style="color: red;">{{ iataCodeErrorMessage }}</small>
+    </p>
+  </form>
+  <form *ngIf="getUserType() === 'airline'" #accountingCodeForm="ngForm" (ngSubmit)="updateAccountingCode(accountingCodeForm)">
+    <p>
+      <small style="font-weight: bold;">Accounting code:</small><br>
+      <input type="text" name="accountingCode" [(ngModel)]="accountingCode" [disabled]="accountingCodeDisabled" placeholder="Enter a new accounting code">
+      &nbsp;&nbsp;&nbsp;
+      <input type="button" value="Edit" (click)="enableAccountingCode()" [style.display]="accountingCodeDisabled? 'inline-block' : 'none'">
+      <input type="submit" value="Update" [style.display]="accountingCodeDisabled? 'none' : 'inline-block'"><br>
+      <small style="color: red;">{{ accountingCodeErrorMessage }}</small>
+    </p>
+  </form>
+  <form *ngIf="getUserType() === 'passenger'" #titleForm="ngForm" (ngSubmit)="updateTitle(titleForm)">
+    <p>
+      <small style="font-weight: bold;">Title:</small><br>
+      <select name="title" [(ngModel)]="title" [disabled]="titleDisabled">
+        <option value="Mr.">Mr.</option>
+        <option value="Ms.">Ms.</option>
+        <option value="Mrs.">Mrs.</option>
+        <option value="Mstr.">Mstr.</option>
+        <option value="Miss">Miss</option>
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="button" value="Edit" (click)="enableTitle()" [style.display]="titleDisabled? 'inline-block' : 'none'">
+      <input type="submit" value="Update" [style.display]="titleDisabled? 'none' : 'inline-block'"><br>
+      <small style="color: red;">{{ titleErrorMessage }}</small>
+    </p>
+  </form>
+  <form *ngIf="getUserType() === 'passenger'" #firstNameForm="ngForm" (ngSubmit)="updateFirstName(firstNameForm)">
+    <p>
+      <small style="font-weight: bold;">First name:</small><br>
+      <input type="text" name="firstName" [(ngModel)]="firstName" [disabled]="firstNameDisabled" placeholder="Enter a new first name">
+      &nbsp;&nbsp;&nbsp;
+      <input type="button" value="Edit" (click)="enableFirstName()" [style.display]="firstNameDisabled? 'inline-block' : 'none'">
+      <input type="submit" value="Update" [style.display]="firstNameDisabled? 'none' : 'inline-block'"><br>
+      <small style="color: red;">{{ firstNameErrorMessage }}</small>
+    </p>
+  </form>
+  <form *ngIf="getUserType() === 'passenger'" #lastNameForm="ngForm" (ngSubmit)="updateLastName(lastNameForm)">
+    <p>
+      <small style="font-weight: bold;">Last name:</small><br>
+      <input type="text" name="lastName" [(ngModel)]="lastName" [disabled]="lastNameDisabled" placeholder="Enter a new last name">
+      &nbsp;&nbsp;&nbsp;
+      <input type="button" value="Edit" (click)="enableLastName()" [style.display]="lastNameDisabled? 'inline-block' : 'none'">
+      <input type="submit" value="Update" [style.display]="lastNameDisabled? 'none' : 'inline-block'"><br>
+      <small style="color: red;">{{ lastNameErrorMessage }}</small>
+    </p>
+  </form>
+  <form *ngIf="getUserType() === 'passenger'" #dateOfBirthForm="ngForm" (ngSubmit)="updateDateOfBirth(dateOfBirthForm)">
+    <p>
+      <small style="font-weight: bold;">Date of birth:</small><br>
+      <input type="date" name="dateOfBirth" [(ngModel)]="dateOfBirth" [max]="today" [disabled]="dateOfBirthDisabled">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="button" value="Edit" (click)="enableDateOfBirth()" [style.display]="dateOfBirthDisabled? 'inline-block' : 'none'">
+      <input type="submit" value="Update" [style.display]="dateOfBirthDisabled? 'none' : 'inline-block'"><br>
+      <small style="color: red;">{{ dateOfBirthErrorMessage }}</small>
+    </p>
+  </form>
+  <form #passwordForm="ngForm" (ngSubmit)="updatePassword(passwordForm)">
+    <p>
+      <small style="font-weight: bold;">Password:</small><br>
+      <input type="password" name="password" [(ngModel)]="password" [disabled]="passwordDisabled" placeholder="Enter a new password">
+      &nbsp;&nbsp;&nbsp;
+      <input type="button" value="Edit" (click)="enablePassword()" [style.display]="passwordDisabled? 'inline-block' : 'none'">
+      <input type="submit" value="Update" [style.display]="passwordDisabled? 'none' : 'inline-block'"><br>
+      <small style="color: red;">{{ passwordErrorMessage }}</small>
+    </p>
+  </form>
+  <div *ngIf="getUserType() !== 'admin'">
+    <h3><br>Delete account</h3>
+    <p><input type="button" value="Delete account" (click)="deleteAccount()"><br></p>
+  </div>
+</div>

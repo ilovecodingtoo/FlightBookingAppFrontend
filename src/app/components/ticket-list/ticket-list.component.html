@@ -1,0 +1,7 @@
+<div *ngIf="viewDataInitialized">
+  <h1>{{ getUserType() === 'admin'? 'Tickets' : 'My tickets'}}</h1>
+  <p *ngIf="tickets.length === 0"><em>No tickets to display yet.</em></p>
+  <ul *ngIf="tickets.length > 0">
+    <li *ngFor="let ticket of tickets"><a [routerLink]="['/tickets', ticket.id]">{{ ticket.number }}</a></li>
+  </ul>
+</div>

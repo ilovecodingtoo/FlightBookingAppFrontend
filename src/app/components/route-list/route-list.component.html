@@ -1,0 +1,20 @@
+<div *ngIf="viewDataInitialized">
+  <h1>Routes</h1>
+  <p *ngIf="routes.length === 0"><em>No routes to display yet.</em></p>
+  <table *ngIf="routes.length > 0" style="width: 50%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 2px solid black; text-align: left;">Origin</th>
+        <th style="border: 2px solid black; text-align: left;">Destination</th>
+        <th style="border: 2px solid black; text-align: left;">Total bookings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let route of routes">
+        <td style="border: 1px outset black;">{{ route.origin }}</td>
+        <td style="border: 1px outset black;">{{ route.destination }}</td>
+        <td style="border: 1px outset black;">{{ route.totalBookings }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

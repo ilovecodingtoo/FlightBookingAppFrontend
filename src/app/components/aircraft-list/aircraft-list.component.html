@@ -1,0 +1,32 @@
+<div *ngIf="viewDataInitialized">
+  <div *ngIf="getUserType() === 'airline'">
+    <h1>My aircrafts</h1>
+    <h3>Add aircraft</h3>
+    <form #form="ngForm" (ngSubmit)="addAircraft(form)">
+      <p>
+        <small style="font-weight: bold;">Tail number</small><br>
+        <input type="text" name="tailNumber" placeholder="Ex: N1234" ngModel><br>
+        <small style="color: red;">{{ tailNumberErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Model</small><br>
+        <input type="text" name="model" placeholder="Ex: Boeing 737-800" ngModel><br>
+        <small style="color: red;">{{ modelErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Seating capacity</small><br>
+        <input type="text" name="seatingCapacity" placeholder="Enter a number" ngModel><br>
+        <small style="color: red;">{{ seatingCapacityErrorMessage }}</small>
+      </p>
+      <p><input type="submit" value="Add aircraft"></p>
+    </form>
+    <h3><br>Aircraft list</h3>
+  </div>
+  <div *ngIf="getUserType() === 'admin'">
+    <h1>Aircrafts</h1>
+  </div>
+  <p *ngIf="aircrafts.length === 0"><em>No aircrafts to display yet.</em></p>
+  <ul *ngIf="aircrafts.length > 0">
+    <li *ngFor="let aircraft of aircrafts"><a [routerLink]="['/aircrafts', aircraft.id]">{{ aircraft.tailNumber }}</a></li>
+  </ul>
+</div>

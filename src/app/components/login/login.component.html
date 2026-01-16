@@ -1,0 +1,16 @@
+<h1>Login</h1>
+<form #form="ngForm" (ngSubmit)="login(form)">
+  <p>
+    <small style="font-weight: bold;">Email</small><br>
+    <input type="text" name="email" placeholder="Enter your email" ngModel><br>
+    <small style="color: red;">{{ emailErrorMessage }}</small>
+  </p>
+  <p>
+    <small style="font-weight: bold;">Password</small><br>
+    <input type="password" name="password" placeholder="Enter your password" ngModel><br>
+    <small style="color: red;">{{ passwordErrorMessage }}</small>
+  </p>
+  <p><input type="checkbox" name="rememberMe" ngModel><small>Remember me</small></p>
+  <p><input type="submit" value="Login"></p>
+</form>
+<p>Don't have an account yet? <a routerLink="/signup">Signup</a></p>

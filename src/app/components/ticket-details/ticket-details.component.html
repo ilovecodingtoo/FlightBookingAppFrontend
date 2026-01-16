@@ -1,0 +1,82 @@
+<div *ngIf="ticketNotfound">
+  <h1>404 Not Found :(</h1>
+  <p>
+    We couldn't find the ticket you're looking for.<br>
+    It may have been deleted or never existed.
+  </p>
+  <a routerLink="/tickets">Browse other tickets</a>
+</div>
+<div *ngIf="viewDataInitialized && !ticketNotfound">
+  <h1>Ticket {{ ticket?.number }}</h1>
+  <div *ngIf="getUserType() === 'admin'">
+    <p>
+      <small style="font-weight: bold;">Number:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.number }}<br>
+      <small style="font-weight: bold;">Fare type:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.fareType === 'E'? 'Economy' : ticket?.fareType === 'B'? 'Business' : 'First Class' }}<br>
+      <small style="font-weight: bold;">Extra baggage:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.extraBaggage? 'Included' : 'Not included' }}<br>
+      <small style="font-weight: bold;">Extra legroom:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.extraLegroom? 'Included' : 'Not included' }}<br>
+      <small style="font-weight: bold;">Priority boarding:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.priorityBoarding? 'Included' : 'Not included' }}<br>
+      <small style="font-weight: bold;">Price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.price?.toFixed(2) }}<br>
+      <small style="font-weight: bold;">Flight:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a [routerLink]="['/flights', ticket?.flightId]">{{ ticket?.flightCode }}</a><br>
+      <small style="font-weight: bold;">Passenger:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a [routerLink]="['/users/passengers', ticket?.passengerId]">{{ ticket?.passengerEmail }}</a><br>
+    </p>
+  </div>
+  <div *ngIf="getUserType() === 'passenger'">
+    <h3>Ticket details</h3>
+    <p>
+      <small style="font-weight: bold;">Number:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.number }}<br>
+      <small style="font-weight: bold;">Offered by:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.airlineName }}<br>
+      <small style="font-weight: bold;">Flight code:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.flightCode }}<br>
+      <small style="font-weight: bold;">From:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.routeOrigin }}<br>
+      <small style="font-weight: bold;">To:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.routeDestination }}<br>
+      <small style="font-weight: bold;">Departure date:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.departure?.replace('T', ' ') }}<br>
+      <small style="font-weight: bold;">Arrival date:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.arrival?.replace('T', ' ') }}<br>
+      <small style="font-weight: bold;">Fare type:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.fareType === 'E'? 'Economy' : ticket?.fareType === 'B'? 'Business' : 'First Class' }}<br>
+      <small style="font-weight: bold;">Extra baggage:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.extraBaggage? 'Included' : 'Not included' }}<br>
+      <small style="font-weight: bold;">Extra legroom:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.extraLegroom? 'Included' : 'Not included' }}<br>
+      <small style="font-weight: bold;">Priority boarding:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.priorityBoarding? 'Included' : 'Not included' }}<br>
+      <small style="font-weight: bold;">Price:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ ticket?.price?.toFixed(2) }}<br>
+    </p>
+    <h3><br>Delete ticket</h3>
+    <p><input type="button" value="Delete ticket" (click)="deleteTicket()"></p>
+  </div>
+</div>

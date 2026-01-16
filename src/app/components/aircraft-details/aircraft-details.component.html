@@ -1,0 +1,43 @@
+<div *ngIf="aircraftNotfound">
+  <h1>404 Not Found :(</h1>
+  <p>
+    We couldn't find the aircraft you're looking for.<br>
+    It may have been deleted or never existed.
+  </p>
+  <a routerLink="/aircrafts">Browse other aircrafts</a>
+</div>
+<div *ngIf="viewDataInitialized && !aircraftNotfound">
+  <h1>Aircraft {{ aircraft?.tailNumber }}</h1>
+  <div *ngIf="getUserType() === 'admin'">
+    <p>
+      <small style="font-weight: bold;">Tail number:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ aircraft?.tailNumber }}<br>
+      <small style="font-weight: bold;">Model:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ aircraft?.model }}<br>
+      <small style="font-weight: bold;">Seating capacity:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ aircraft?.seatingCapacity }}<br>
+      <small style="font-weight: bold;">Airline:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a [routerLink]="['/users/airlines', aircraft?.airlineId]">{{ aircraft?.airlineEmail }}</a><br>
+    </p>
+  </div>
+  <div *ngIf="getUserType() === 'airline'">
+    <h3>Aircraft details</h3>
+    <p>
+      <small style="font-weight: bold;">Tail number:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ aircraft?.tailNumber }}<br>
+      <small style="font-weight: bold;">Model:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ aircraft?.model }}<br>
+      <small style="font-weight: bold;">Seating capacity:</small>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ aircraft?.seatingCapacity }}<br>
+    </p>
+    <h3><br>Delete aircraft</h3>
+    <p><input type="button" value="Delete aircraft" (click)="deleteAircraft()"></p>
+  </div>
+</div>

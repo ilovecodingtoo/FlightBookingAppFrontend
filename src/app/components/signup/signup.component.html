@@ -1,0 +1,64 @@
+<h1>Signup</h1>
+<form #form="ngForm" (ngSubmit)="signup(form)">
+  <p>
+    Register as a new:<br>
+    <input type="radio" name="userType" value="passenger" [(ngModel)]="userType" (change)="clearErrorMessages()">
+    <small>Passenger</small>
+    <input type="radio" name="userType" value="airline" [(ngModel)]="userType" (change)="clearErrorMessages()">
+    <small>Airline</small>
+  </p>
+  <p>
+    <small style="font-weight: bold;">Email</small><br>
+    <input type="text" name="email" placeholder="Ex: john.doe@example.com" ngModel><br>
+    <small style="color: red;">{{ emailErrorMessage }}</small>
+  </p>
+  <p *ngIf="userType === 'airline'">
+    <small style="font-weight: bold;">Company name</small><br>
+    <input type="text" name="name" placeholder="Ex: American Airlines" ngModel><br>
+    <small style="color: red;">{{ nameErrorMessage }}</small>
+  </p>
+  <p *ngIf="userType === 'airline'">
+    <small style="font-weight: bold;">IATA code</small><br>
+    <input type="text" name="iataCode" placeholder="Ex: AA" ngModel><br>
+    <small style="color: red;">{{ iataCodeErrorMessage }}</small>
+  </p>
+  <p *ngIf="userType === 'airline'">
+    <small style="font-weight: bold;">Accounting code</small><br>
+    <input type="text" name="accountingCode" placeholder="Ex: 001" ngModel><br>
+    <small style="color: red;">{{ accountingCodeErrorMessage }}</small>
+  </p>
+  <p *ngIf="userType === 'passenger'">
+    <small style="font-weight: bold;">Title</small><br>
+    <select name="title" ngModel>
+      <option value="" selected disabled hidden>Select a title</option>
+      <option value="Mr.">Mr.</option>
+      <option value="Ms.">Ms.</option>
+      <option value="Mrs.">Mrs.</option>
+      <option value="Mstr.">Mstr.</option>
+      <option value="Miss">Miss</option>
+    </select><br>
+    <small style="color: red;">{{ titleErrorMessage }}</small>
+  </p>
+  <p *ngIf="userType === 'passenger'">
+    <small style="font-weight: bold;">First name</small><br>
+    <input type="text" name="firstName" placeholder="Ex: John" ngModel><br>
+    <small style="color: red;">{{ firstNameErrorMessage }}</small>
+  </p>
+  <p *ngIf="userType === 'passenger'">
+    <small style="font-weight: bold;">Last name</small><br>
+    <input type="text" name="lastName" placeholder="Ex: Doe" ngModel><br>
+    <small style="color: red;">{{ lastNameErrorMessage }}</small>
+  </p>
+  <p *ngIf="userType === 'passenger'">
+    <small style="font-weight: bold;">Date of birth</small><br>
+    <input type="date" name="dateOfBirth" [max]="today" ngModel><br>
+    <small style="color: red;">{{ dateOfBirthErrorMessage }}</small>
+  </p>
+  <p>
+    <small style="font-weight: bold;">Password</small><br>
+    <input type="password" name="password" placeholder="8+ characters" ngModel><br>
+    <small style="color: red;">{{ passwordErrorMessage }}</small>
+  </p>
+  <p><input type="submit" value="Signup"></p>
+</form>
+<p>Already have an account? <a routerLink="/login">Login</a></p>

@@ -1,0 +1,86 @@
+<div *ngIf="viewDataInitialized">
+  <div *ngIf="getUserType() === 'airline'">
+    <h1>My flights</h1>
+    <h3>Add flight</h3>
+    <form #form="ngForm" (ngSubmit)="addFlight(form)">
+      <p>
+        <small style="font-weight: bold;">Code</small><br>
+        <input type="text" name="code" placeholder="Ex: AA001" ngModel><br>
+        <small style="color: red;">{{ codeErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Aircraft</small><br>
+        <select name="aircraftId" ngModel>
+          <option value="" selected disabled hidden>Select an aircraft</option>
+          <option *ngFor="let aircraft of aircrafts" [value]="aircraft.id">{{ aircraft.tailNumber }}</option>
+        </select><br>
+        <small style="color: red;">{{ aircraftIdErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Origin</small><br>
+        <input list="origins" name="origin" placeholder="Select or enter an origin" ngModel>
+        <datalist id="origins">
+          <option *ngFor="let origin of origins" [value]="origin">
+        </datalist><br>
+        <small style="color: red;">{{ originErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Destination</small><br>
+        <input list="destinations" name="destination" placeholder="Select or enter a destination" ngModel>
+        <datalist id="destinations">
+          <option *ngFor="let destination of destinations" [value]="destination">
+        </datalist><br>
+        <small style="color: red;">{{ destinationErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Departure date</small><br>
+        <input type="datetime-local" name="departure" [min]="now" ngModel><br>
+        <small style="color: red;">{{ departureErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Arrival date</small><br>
+        <input type="datetime-local" name="arrival" [min]="now" ngModel><br>
+        <small style="color: red;">{{ arrivalErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Economy price</small><br>
+        <input type="text" name="economyPrice" placeholder="Enter a price" ngModel><br>
+        <small style="color: red;">{{ economyPriceErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Business price</small><br>
+        <input type="text" name="businessPrice" placeholder="Enter a price" ngModel><br>
+        <small style="color: red;">{{ businessPriceErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">First class price</small><br>
+        <input type="text" name="firstClassPrice" placeholder="Enter a price" ngModel><br>
+        <small style="color: red;">{{ firstClassPriceErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Extra baggage price</small><br>
+        <input type="text" name="extraBaggagePrice" placeholder="Enter a price" ngModel><br>
+        <small style="color: red;">{{ extraBaggagePriceErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Extra legroom price</small><br>
+        <input type="text" name="extraLegroomPrice" placeholder="Enter a price" ngModel><br>
+        <small style="color: red;">{{ extraLegroomPriceErrorMessage }}</small>
+      </p>
+      <p>
+        <small style="font-weight: bold;">Priority boarding price</small><br>
+        <input type="text" name="priorityBoardingPrice" placeholder="Enter a price" ngModel><br>
+        <small style="color: red;">{{ priorityBoardingPriceErrorMessage }}</small>
+      </p>
+      <p><input type="submit" value="Add flight"></p>
+    </form>
+    <h3><br>Flight list</h3>
+  </div>
+  <div *ngIf="getUserType() === 'admin'">
+    <h1>Flights</h1>
+  </div>
+  <p *ngIf="flights.length === 0"><em>No flights to display yet.</em></p>
+  <ul *ngIf="flights.length > 0">
+    <li *ngFor="let flight of flights"><a [routerLink]="['/flights', flight.id]">{{ flight.code }}</a></li>
+  </ul>
+</div>
