@@ -11,94 +11,66 @@
   <div *ngIf="getUserType() === 'admin'">
     <p>
       <small style="font-weight: bold;">Code:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.code }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.code }}</span><br>
       <small style="font-weight: bold;">Origin:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.routeOrigin }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.routeOrigin }}</span><br>
       <small style="font-weight: bold;">Destination:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.routeDestination }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.routeDestination }}</span><br>
       <small style="font-weight: bold;">Departure date:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.departure?.replace('T', ' ') }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.departure?.replace('T', ' ') }}</span><br>
       <small style="font-weight: bold;">Arrival date:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.arrival?.replace('T', ' ') }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.arrival?.replace('T', ' ') }}</span><br>
       <small style="font-weight: bold;">Economy price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.economyPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.economyPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Business price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.businessPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.businessPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">First class price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.firstClassPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.firstClassPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Extra baggage price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.extraBaggagePrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.extraBaggagePrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Extra legroom price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.extraLegroomPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.extraLegroomPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Priority boarding price:</small>
-      &nbsp;
-      {{ flight?.priorityBoardingPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.priorityBoardingPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Total bookings:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.totalBookings }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.totalBookings }}</span><br>
       <small style="font-weight: bold;">Total revenue:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.totalRevenue?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.totalRevenue?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Aircraft:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a [routerLink]="['/aircrafts', flight?.aircraftId]">{{ flight?.aircraftTailNumber }}</a><br>
+      <span style="left: 160px; position: absolute;"><a [routerLink]="['/aircrafts', flight?.aircraftId]">{{ flight?.aircraftTailNumber }}</a></span><br>
     </p>
   </div>
   <div *ngIf="getUserType() === 'airline'">
     <h3>Flight details</h3>
     <p>
       <small style="font-weight: bold;">Code:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.code }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.code }}</span><br>
       <small style="font-weight: bold;">Origin:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.routeOrigin }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.routeOrigin }}</span><br>
       <small style="font-weight: bold;">Destination:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.routeDestination }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.routeDestination }}</span><br>
       <small style="font-weight: bold;">Departure date:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.departure?.replace('T', ' ') }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.departure?.replace('T', ' ') }}</span><br>
       <small style="font-weight: bold;">Arrival date:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.arrival?.replace('T', ' ') }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.arrival?.replace('T', ' ') }}</span><br>
       <small style="font-weight: bold;">Economy price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.economyPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.economyPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Business price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.businessPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.businessPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">First class price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.firstClassPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.firstClassPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Extra baggage price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.extraBaggagePrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.extraBaggagePrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Extra legroom price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.extraLegroomPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.extraLegroomPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Priority boarding price:</small>
-      &nbsp;
-      {{ flight?.priorityBoardingPrice?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.priorityBoardingPrice?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Total bookings:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.totalBookings }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.totalBookings }}</span><br>
       <small style="font-weight: bold;">Total revenue:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ flight?.totalRevenue?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ flight?.totalRevenue?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Aircraft:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a [routerLink]="['/aircrafts', flight?.aircraftId]">{{ flight?.aircraftTailNumber }}</a><br>
+      <span style="left: 160px; position: absolute;"><a [routerLink]="['/aircrafts', flight?.aircraftId]">{{ flight?.aircraftTailNumber }}</a></span><br>
     </p>
     <h3><br>Delete flight</h3>
     <p><input type="button" value="Delete flight" (click)="deleteFlight()"></p>

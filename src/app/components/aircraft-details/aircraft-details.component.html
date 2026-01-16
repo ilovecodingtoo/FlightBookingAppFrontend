@@ -11,31 +11,24 @@
   <div *ngIf="getUserType() === 'admin'">
     <p>
       <small style="font-weight: bold;">Tail number:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ aircraft?.tailNumber }}<br>
+      <span style="left: 160px; position: absolute;">{{ aircraft?.tailNumber }}</span><br>
       <small style="font-weight: bold;">Model:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ aircraft?.model }}<br>
+      <span style="left: 160px; position: absolute;">{{ aircraft?.model }}</span><br>
       <small style="font-weight: bold;">Seating capacity:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ aircraft?.seatingCapacity }}<br>
+      <span style="left: 160px; position: absolute;">{{ aircraft?.seatingCapacity }}</span><br>
       <small style="font-weight: bold;">Airline:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a [routerLink]="['/users/airlines', aircraft?.airlineId]">{{ aircraft?.airlineEmail }}</a><br>
+      <span style="left: 160px; position: absolute;"><a [routerLink]="['/users/airlines', aircraft?.airlineId]">{{ aircraft?.airlineEmail }}</a></span><br>
     </p>
   </div>
   <div *ngIf="getUserType() === 'airline'">
     <h3>Aircraft details</h3>
     <p>
       <small style="font-weight: bold;">Tail number:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ aircraft?.tailNumber }}<br>
+      <span style="left: 160px; position: absolute;">{{ aircraft?.tailNumber }}</span><br>
       <small style="font-weight: bold;">Model:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ aircraft?.model }}<br>
+      <span style="left: 160px; position: absolute;">{{ aircraft?.model }}</span><br>
       <small style="font-weight: bold;">Seating capacity:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ aircraft?.seatingCapacity }}<br>
+      <span style="left: 160px; position: absolute;">{{ aircraft?.seatingCapacity }}</span><br>
     </p>
     <h3><br>Delete aircraft</h3>
     <p><input type="button" value="Delete aircraft" (click)="deleteAircraft()"></p>

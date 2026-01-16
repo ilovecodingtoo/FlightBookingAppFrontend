@@ -7,9 +7,8 @@
     <p>
       <small style="font-weight: bold;">Email:</small><br>
       <input type="text" name="email" [(ngModel)]="email" [disabled]="emailDisabled" placeholder="Enter a new email">
-      &nbsp;&nbsp;&nbsp;
-      <input type="button" value="Edit" (click)="enableEmail()" [style.display]="emailDisabled? 'inline-block' : 'none'">
-      <input type="submit" value="Update" [style.display]="emailDisabled? 'none' : 'inline-block'"><br>
+      <input type="button" value="Edit" (click)="enableEmail()" [style.display]="emailDisabled? 'inline-block' : 'none'" style="margin-left: 20px;">
+      <input type="submit" value="Update" [style.display]="emailDisabled? 'none' : 'inline-block'" style="margin-left: 20px;"><br>
       <small style="color: red;">{{ emailErrorMessage }}</small>
     </p>
   </form>
@@ -17,9 +16,8 @@
     <p>
       <small style="font-weight: bold;">Company name:</small><br>
       <input type="text" name="name" [(ngModel)]="name" [disabled]="nameDisabled" placeholder="Enter a new company name">
-      &nbsp;&nbsp;&nbsp;
-      <input type="button" value="Edit" (click)="enableName()" [style.display]="nameDisabled? 'inline-block' : 'none'">
-      <input type="submit" value="Update" [style.display]="nameDisabled? 'none' : 'inline-block'"><br>
+      <input type="button" value="Edit" (click)="enableName()" [style.display]="nameDisabled? 'inline-block' : 'none'" style="margin-left: 20px;">
+      <input type="submit" value="Update" [style.display]="nameDisabled? 'none' : 'inline-block'" style="margin-left: 20px;"><br>
       <small style="color: red;">{{ nameErrorMessage }}</small>
     </p>
   </form>
@@ -27,9 +25,8 @@
     <p>
       <small style="font-weight: bold;">IATA code:</small><br>
       <input type="text" name="iataCode" [(ngModel)]="iataCode" [disabled]="iataCodeDisabled" placeholder="Enter a new IATA code">
-      &nbsp;&nbsp;&nbsp;
-      <input type="button" value="Edit" (click)="enableIataCode()" [style.display]="iataCodeDisabled? 'inline-block' : 'none'">
-      <input type="submit" value="Update" [style.display]="iataCodeDisabled? 'none' : 'inline-block'"><br>
+      <input type="button" value="Edit" (click)="enableIataCode()" [style.display]="iataCodeDisabled? 'inline-block' : 'none'" style="margin-left: 20px;">
+      <input type="submit" value="Update" [style.display]="iataCodeDisabled? 'none' : 'inline-block'" style="margin-left: 20px;"><br>
       <small style="color: red;">{{ iataCodeErrorMessage }}</small>
     </p>
   </form>
@@ -37,9 +34,8 @@
     <p>
       <small style="font-weight: bold;">Accounting code:</small><br>
       <input type="text" name="accountingCode" [(ngModel)]="accountingCode" [disabled]="accountingCodeDisabled" placeholder="Enter a new accounting code">
-      &nbsp;&nbsp;&nbsp;
-      <input type="button" value="Edit" (click)="enableAccountingCode()" [style.display]="accountingCodeDisabled? 'inline-block' : 'none'">
-      <input type="submit" value="Update" [style.display]="accountingCodeDisabled? 'none' : 'inline-block'"><br>
+      <input type="button" value="Edit" (click)="enableAccountingCode()" [style.display]="accountingCodeDisabled? 'inline-block' : 'none'" style="margin-left: 20px;">
+      <input type="submit" value="Update" [style.display]="accountingCodeDisabled? 'none' : 'inline-block'" style="margin-left: 20px;"><br>
       <small style="color: red;">{{ accountingCodeErrorMessage }}</small>
     </p>
   </form>
@@ -53,9 +49,8 @@
         <option value="Mstr.">Mstr.</option>
         <option value="Miss">Miss</option>
       </select>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="button" value="Edit" (click)="enableTitle()" [style.display]="titleDisabled? 'inline-block' : 'none'">
-      <input type="submit" value="Update" [style.display]="titleDisabled? 'none' : 'inline-block'"><br>
+      <input type="button" value="Edit" (click)="enableTitle()" [style.display]="titleDisabled? 'inline-block' : 'none'" style="margin-left: 138px;">
+      <input type="submit" value="Update" [style.display]="titleDisabled? 'none' : 'inline-block'" style="margin-left: 138px;"><br>
       <small style="color: red;">{{ titleErrorMessage }}</small>
     </p>
   </form>
@@ -63,9 +58,8 @@
     <p>
       <small style="font-weight: bold;">First name:</small><br>
       <input type="text" name="firstName" [(ngModel)]="firstName" [disabled]="firstNameDisabled" placeholder="Enter a new first name">
-      &nbsp;&nbsp;&nbsp;
-      <input type="button" value="Edit" (click)="enableFirstName()" [style.display]="firstNameDisabled? 'inline-block' : 'none'">
-      <input type="submit" value="Update" [style.display]="firstNameDisabled? 'none' : 'inline-block'"><br>
+      <input type="button" value="Edit" (click)="enableFirstName()" [style.display]="firstNameDisabled? 'inline-block' : 'none'" style="margin-left: 20px;">
+      <input type="submit" value="Update" [style.display]="firstNameDisabled? 'none' : 'inline-block'" style="margin-left: 20px;"><br>
       <small style="color: red;">{{ firstNameErrorMessage }}</small>
     </p>
   </form>
@@ -73,9 +67,8 @@
     <p>
       <small style="font-weight: bold;">Last name:</small><br>
       <input type="text" name="lastName" [(ngModel)]="lastName" [disabled]="lastNameDisabled" placeholder="Enter a new last name">
-      &nbsp;&nbsp;&nbsp;
-      <input type="button" value="Edit" (click)="enableLastName()" [style.display]="lastNameDisabled? 'inline-block' : 'none'">
-      <input type="submit" value="Update" [style.display]="lastNameDisabled? 'none' : 'inline-block'"><br>
+      <input type="button" value="Edit" (click)="enableLastName()" [style.display]="lastNameDisabled? 'inline-block' : 'none'" style="margin-left: 20px;">
+      <input type="submit" value="Update" [style.display]="lastNameDisabled? 'none' : 'inline-block'" style="margin-left: 20px;"><br>
       <small style="color: red;">{{ lastNameErrorMessage }}</small>
     </p>
   </form>
@@ -83,9 +76,8 @@
     <p>
       <small style="font-weight: bold;">Date of birth:</small><br>
       <input type="date" name="dateOfBirth" [(ngModel)]="dateOfBirth" [max]="today" [disabled]="dateOfBirthDisabled">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="button" value="Edit" (click)="enableDateOfBirth()" [style.display]="dateOfBirthDisabled? 'inline-block' : 'none'">
-      <input type="submit" value="Update" [style.display]="dateOfBirthDisabled? 'none' : 'inline-block'"><br>
+      <input type="button" value="Edit" (click)="enableDateOfBirth()" [style.display]="dateOfBirthDisabled? 'inline-block' : 'none'" style="margin-left: 88px;">
+      <input type="submit" value="Update" [style.display]="dateOfBirthDisabled? 'none' : 'inline-block'" style="margin-left: 88px;"><br>
       <small style="color: red;">{{ dateOfBirthErrorMessage }}</small>
     </p>
   </form>
@@ -93,9 +85,8 @@
     <p>
       <small style="font-weight: bold;">Password:</small><br>
       <input type="password" name="password" [(ngModel)]="password" [disabled]="passwordDisabled" placeholder="Enter a new password">
-      &nbsp;&nbsp;&nbsp;
-      <input type="button" value="Edit" (click)="enablePassword()" [style.display]="passwordDisabled? 'inline-block' : 'none'">
-      <input type="submit" value="Update" [style.display]="passwordDisabled? 'none' : 'inline-block'"><br>
+      <input type="button" value="Edit" (click)="enablePassword()" [style.display]="passwordDisabled? 'inline-block' : 'none'" style="margin-left: 20px;">
+      <input type="submit" value="Update" [style.display]="passwordDisabled? 'none' : 'inline-block'" style="margin-left: 20px;"><br>
       <small style="color: red;">{{ passwordErrorMessage }}</small>
     </p>
   </form>

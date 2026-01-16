@@ -11,70 +11,50 @@
   <div *ngIf="getUserType() === 'admin'">
     <p>
       <small style="font-weight: bold;">Number:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.number }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.number }}</span><br>
       <small style="font-weight: bold;">Fare type:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.fareType === 'E'? 'Economy' : ticket?.fareType === 'B'? 'Business' : 'First Class' }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.fareType === 'E'? 'Economy' : ticket?.fareType === 'B'? 'Business' : 'First Class' }}</span><br>
       <small style="font-weight: bold;">Extra baggage:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.extraBaggage? 'Included' : 'Not included' }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.extraBaggage? 'Included' : 'Not included' }}</span><br>
       <small style="font-weight: bold;">Extra legroom:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.extraLegroom? 'Included' : 'Not included' }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.extraLegroom? 'Included' : 'Not included' }}</span><br>
       <small style="font-weight: bold;">Priority boarding:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.priorityBoarding? 'Included' : 'Not included' }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.priorityBoarding? 'Included' : 'Not included' }}</span><br>
       <small style="font-weight: bold;">Price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.price?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.price?.toFixed(2) }}</span><br>
       <small style="font-weight: bold;">Flight:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a [routerLink]="['/flights', ticket?.flightId]">{{ ticket?.flightCode }}</a><br>
+      <span style="left: 160px; position: absolute;"><a [routerLink]="['/flights', ticket?.flightId]">{{ ticket?.flightCode }}</a></span><br>
       <small style="font-weight: bold;">Passenger:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a [routerLink]="['/users/passengers', ticket?.passengerId]">{{ ticket?.passengerEmail }}</a><br>
+      <span style="left: 160px; position: absolute;"><a [routerLink]="['/users/passengers', ticket?.passengerId]">{{ ticket?.passengerEmail }}</a></span><br>
     </p>
   </div>
   <div *ngIf="getUserType() === 'passenger'">
     <h3>Ticket details</h3>
     <p>
       <small style="font-weight: bold;">Number:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.number }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.number }}</span><br>
       <small style="font-weight: bold;">Offered by:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.airlineName }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.airlineName }}</span><br>
       <small style="font-weight: bold;">Flight code:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.flightCode }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.flightCode }}</span><br>
       <small style="font-weight: bold;">From:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.routeOrigin }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.routeOrigin }}</span><br>
       <small style="font-weight: bold;">To:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.routeDestination }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.routeDestination }}</span><br>
       <small style="font-weight: bold;">Departure date:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.departure?.replace('T', ' ') }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.departure?.replace('T', ' ') }}</span><br>
       <small style="font-weight: bold;">Arrival date:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.arrival?.replace('T', ' ') }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.arrival?.replace('T', ' ') }}</span><br>
       <small style="font-weight: bold;">Fare type:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.fareType === 'E'? 'Economy' : ticket?.fareType === 'B'? 'Business' : 'First Class' }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.fareType === 'E'? 'Economy' : ticket?.fareType === 'B'? 'Business' : 'First Class' }}</span><br>
       <small style="font-weight: bold;">Extra baggage:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.extraBaggage? 'Included' : 'Not included' }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.extraBaggage? 'Included' : 'Not included' }}</span><br>
       <small style="font-weight: bold;">Extra legroom:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.extraLegroom? 'Included' : 'Not included' }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.extraLegroom? 'Included' : 'Not included' }}</span><br>
       <small style="font-weight: bold;">Priority boarding:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.priorityBoarding? 'Included' : 'Not included' }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.priorityBoarding? 'Included' : 'Not included' }}</span><br>
       <small style="font-weight: bold;">Price:</small>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {{ ticket?.price?.toFixed(2) }}<br>
+      <span style="left: 160px; position: absolute;">{{ ticket?.price?.toFixed(2) }}</span><br>
     </p>
     <h3><br>Delete ticket</h3>
     <p><input type="button" value="Delete ticket" (click)="deleteTicket()"></p>
