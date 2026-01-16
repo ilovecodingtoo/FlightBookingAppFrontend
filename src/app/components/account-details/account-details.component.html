@@ -83,7 +83,7 @@
     <p>
       <small style="font-weight: bold;">Date of birth:</small><br>
       <input type="date" name="dateOfBirth" [(ngModel)]="dateOfBirth" [max]="today" [disabled]="dateOfBirthDisabled">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="button" value="Edit" (click)="enableDateOfBirth()" [style.display]="dateOfBirthDisabled? 'inline-block' : 'none'">
       <input type="submit" value="Update" [style.display]="dateOfBirthDisabled? 'none' : 'inline-block'"><br>
       <small style="color: red;">{{ dateOfBirthErrorMessage }}</small>
