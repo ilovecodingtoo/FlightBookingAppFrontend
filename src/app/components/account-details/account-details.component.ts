@@ -47,7 +47,7 @@ export class AccountDetailsComponent implements OnInit {
   constructor(private auth: AuthService, private api: ApiService, private router: Router) {}
 
   ngOnInit() {
-    this.today = new Date().toISOString().split('T')[0];
+    this.today = new Date().toISOString().slice(0, 10);
     if(!this.auth.userSignedIn())
       this.router.navigate(['/401']);
     //else if(this.auth.getUserType() === 'airline' && !this.auth.getCurrentUser()?.registrationCompleted)

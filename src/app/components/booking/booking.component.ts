@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -12,20 +12,22 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-booking',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css'
 })
 export class BookingComponent implements OnInit {
   currentStepIndex = -1;
-  now: string = '';
+  today: string = '';
   origins: string[] = [];
   destinations: string[] = [];
   tripType: string = 'one-way';
-  outboundTrips: Flight[][] = [];
-  inboundTrips: Flight[][] = [];
+  origin: string = '';
+  destination: string = '';
   ticketQuantity: string = '';
   fareType: string = '';
+  outboundTrips: Flight[][] = [];
+  inboundTrips: Flight[][] = [];
   selectedOutboundTripIndex: number | null = null;
   selectedInboundTripIndex: number | null = null;
   extraBaggage: boolean = false;
@@ -60,12 +62,12 @@ export class BookingComponent implements OnInit {
   }
 
   goToTripSearch() {
-    this.now = new Date().toISOString().slice(0, 16);
+    this.today = new Date().toISOString().slice(0, 10);
     this.extraBaggage = this.extraLegroom = this.priorityBoarding = false;
     this.origins = this.destinations = this.outboundTrips = this.inboundTrips = [];
     this.tripType = 'one-way';
     this.selectedOutboundTripIndex = this.selectedInboundTripIndex = null;
-    this.ticketQuantity = this.fareType = this.number = this.name = this.expiration = this.cvv = '';
+    this.origin = this.destination = this.ticketQuantity = this.fareType = this.number = this.name = this.expiration = this.cvv = '';
     this.originErrorMessage = this.destinationErrorMessage = this.outboundDateErrorMessage = this.inboundDateErrorMessage = this.ticketQuantityErrorMessage = this.fareTypeErrorMessage = this.emailErrorMessage = this.passwordErrorMessage = this.numberErrorMessage = this.nameErrorMessage = this.expirationErrorMessage = this.cvvErrorMessage = '';
     this.api.getCities().subscribe({
       next: (cities: OriginDestination) => {

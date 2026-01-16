@@ -4,34 +4,34 @@
     <p>
       <small style="font-weight: bold;">Trip type</small><br>
       <input type="radio" name="tripType" value="one-way" [(ngModel)]="tripType">
-      <small>One-way</small>
+      <small>One-way</small>&nbsp;
       <input type="radio" name="tripType" value="return" [(ngModel)]="tripType">
       <small>Return</small>
     </p>
     <p>
       <small style="font-weight: bold;">From</small><br>
-      <select name="origin" ngModel>
-        <option value="" selected disabled hidden>Select an origin</option>
+      <select name="origin" [(ngModel)]="origin">
+        <option value="" disabled hidden>Select an origin</option>
         <option *ngFor="let origin of origins" [value]="origin">{{ origin }}</option>
       </select><br>
       <small style="color: red;">{{ originErrorMessage }}</small>
     </p>
     <p>
       <small style="font-weight: bold;">To</small><br>
-      <select name="destination" ngModel>
-        <option value="" selected disabled hidden>Select a destination</option>
+      <select name="destination" [(ngModel)]="destination">
+        <option value="" disabled hidden>Select a destination</option>
         <option *ngFor="let destination of destinations" [value]="destination">{{ destination }}</option>
       </select><br>
       <small style="color: red;">{{ destinationErrorMessage }}</small>
     </p>
     <p>
       <small style="font-weight: bold;">Outbound date</small><br>
-      <input type="date" name="outboundDate" [min]="now" ngModel><br>
+      <input type="date" name="outboundDate" [min]="today" ngModel><br>
       <small style="color: red;">{{ outboundDateErrorMessage }}</small>
     </p>
     <p *ngIf="tripType === 'return'">
       <small style="font-weight: bold;">Inbound date</small><br>
-      <input type="date" name="inboundDate" [min]="now" ngModel><br>
+      <input type="date" name="inboundDate" [min]="today" ngModel><br>
       <small style="color: red;">{{ inboundDateErrorMessage }}</small>
     </p>
     <p>
@@ -61,8 +61,9 @@
   <a routerLink="/booking">Start a new search</a>
 </div>
 <div *ngIf="currentStepIndex === 2">
+  <div>&nbsp;</div>
   <a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;Outbound trips
-  <h1>Outbound trips</h1>
+  <h1>Outbound trips from {{ origin }} to {{ destination }}</h1>
   <table style="width: 50%; border-collapse: collapse;">
     <thead>
       <tr>
@@ -85,8 +86,9 @@
   </table>
 </div>
 <div *ngIf="currentStepIndex === 3">
+  <div>&nbsp;</div>
   <a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;Inbound trips
-  <h1>Inbound trips</h1>
+  <h1>Inbound trips from {{ destination }} to {{ origin }}</h1>
   <table style="width: 50%; border-collapse: collapse;">
     <thead>
       <tr>
@@ -109,6 +111,7 @@
   </table>
 </div>
 <div *ngIf="currentStepIndex === 4">
+  <div>&nbsp;</div>
   <div *ngIf="tripType === 'one-way'"><a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;Extras</div>
   <div *ngIf="tripType === 'return'"><a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToInboundTripSelection($event)">Inbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;Extras</div>
   <h1>Extras</h1>
@@ -137,6 +140,7 @@
   </form>
 </div>
 <div *ngIf="currentStepIndex === 6">
+  <div>&nbsp;</div>
   <div *ngIf="tripType === 'one-way'"><a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToExtraSelection($event)">Extras</a>&nbsp;&nbsp;>&nbsp;&nbsp;Checkout</div>
   <div *ngIf="tripType === 'return'"><a href="#" (click)="navigateToTripSearch($event)">Search trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToOutboundTripSelection($event)">Outbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToInboundTripSelection($event)">Inbound trips</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" (click)="navigateToExtraSelection($event)">Extras</a>&nbsp;&nbsp;>&nbsp;&nbsp;Checkout</div>
   <h1>Checkout</h1>
