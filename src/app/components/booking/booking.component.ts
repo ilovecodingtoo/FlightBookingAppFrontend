@@ -116,17 +116,7 @@ export class BookingComponent implements OnInit {
             this.goToOutboundTripSelection();
           }
         },
-        error: (err: HttpErrorResponse) => {
-          if(err.status === 400){
-            for(let message of err.error.messages)
-              if(message === 'Unavailable origin')
-                this.originErrorMessage = message;
-              else if(message === 'Unavailable destination')
-                this.destinationErrorMessage = message;
-          }
-          else
-            this.router.navigate(['/500']);
-        }
+        error: () => this.router.navigate(['/500'])
       });
     }
   }
